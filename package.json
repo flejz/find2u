@@ -4,7 +4,8 @@
   "main": "src",
   "private": true,
   "scripts": {
-    "start": "node .",
+    "start": "NODE_ENV=production MASTER_KEY=amFpbWVsb3Blc2Zsb3Jlc0BnbWFpbC5jb206SkBpbWUwMTAyMDMwNA JWT_SECRET=9gFzqecrYNcjQAkmAlWA6XclgA0qUeLV node dist",
+    "build": "babel src -s -D -d dist",
     "test": "jest",
     "test:unit": "npm test \"src/**/!(index).test.js\"",
     "test:integration": "npm test \"src/**/index.test.js\"",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "apidoc": "^0.16.1",
     "apidoc-markdown": "^0.2.0",
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^7.0.0",
     "babel-jest": "^18.0.0",
     "cross-env": "^3.1.3",
