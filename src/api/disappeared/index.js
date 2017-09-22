@@ -7,7 +7,7 @@ import { schema } from './model'
 export Disappeared, { schema } from './model'
 
 const router = new Router()
-const { name, birth_date, disappearance_date, mobile_contact } = schema.tree
+const { name, birth_date, date, obs, status } = schema.tree
 
 /**
  * @api {post} /disappeareds Create disappeared
@@ -17,8 +17,9 @@ const { name, birth_date, disappearance_date, mobile_contact } = schema.tree
  * @apiParam {String} access_token user access token.
  * @apiParam name Disappeared's name.
  * @apiParam birth_date Disappeared's birth_date.
- * @apiParam disappearance_date Disappeared's disappearance_date.
- * @apiParam mobile_contact Disappeared's mobile_contact.
+ * @apiParam date Disappeared's date.
+ * @apiParam obs Disappeared's obs.
+ * @apiParam status Disappeared's status.
  * @apiSuccess {Object} disappeared Disappeared's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Disappeared not found.
@@ -26,7 +27,7 @@ const { name, birth_date, disappearance_date, mobile_contact } = schema.tree
  */
 router.post('/',
   token({ required: true }),
-  body({ name, birth_date, disappearance_date, mobile_contact }),
+  body({ name, birth_date, date, obs, status }),
   create)
 
 /**
@@ -60,8 +61,9 @@ router.get('/:id',
  * @apiParam {String} access_token user access token.
  * @apiParam name Disappeared's name.
  * @apiParam birth_date Disappeared's birth_date.
- * @apiParam disappearance_date Disappeared's disappearance_date.
- * @apiParam mobile_contact Disappeared's mobile_contact.
+ * @apiParam date Disappeared's date.
+ * @apiParam obs Disappeared's obs.
+ * @apiParam status Disappeared's status.
  * @apiSuccess {Object} disappeared Disappeared's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Disappeared not found.
@@ -69,7 +71,7 @@ router.get('/:id',
  */
 router.put('/:id',
   token({ required: true }),
-  body({ name, birth_date, disappearance_date, mobile_contact }),
+  body({ name, birth_date, date, obs, status }),
   update)
 
 /**

@@ -12,10 +12,13 @@ const disappearedSchema = new Schema({
   birth_date: {
     type: String
   },
-  disappearance_date: {
+  date: {
     type: String
   },
-  mobile_contact: {
+  obs: {
+    type: String
+  },
+  status: {
     type: String
   }
 }, {
@@ -30,8 +33,9 @@ disappearedSchema.methods = {
       user: this.user.view(full),
       name: this.name,
       birth_date: this.birth_date,
-      disappearance_date: this.disappearance_date,
-      mobile_contact: this.mobile_contact,
+      date: this.date,
+      obs: this.obs,
+      status: this.status,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     }

@@ -5,7 +5,7 @@ let user, disappeared
 
 beforeEach(async () => {
   user = await User.create({ email: 'a@a.com', password: '123456' })
-  disappeared = await Disappeared.create({ user, name: 'test', birth_date: 'test', disappearance_date: 'test', mobile_contact: 'test' })
+  disappeared = await Disappeared.create({ user, name: 'test', birth_date: 'test', date: 'test', obs: 'test', status: 'test' })
 })
 
 describe('view', () => {
@@ -17,8 +17,9 @@ describe('view', () => {
     expect(view.user.id).toBe(user.id)
     expect(view.name).toBe(disappeared.name)
     expect(view.birth_date).toBe(disappeared.birth_date)
-    expect(view.disappearance_date).toBe(disappeared.disappearance_date)
-    expect(view.mobile_contact).toBe(disappeared.mobile_contact)
+    expect(view.date).toBe(disappeared.date)
+    expect(view.obs).toBe(disappeared.obs)
+    expect(view.status).toBe(disappeared.status)
     expect(view.createdAt).toBeTruthy()
     expect(view.updatedAt).toBeTruthy()
   })
@@ -31,8 +32,9 @@ describe('view', () => {
     expect(view.user.id).toBe(user.id)
     expect(view.name).toBe(disappeared.name)
     expect(view.birth_date).toBe(disappeared.birth_date)
-    expect(view.disappearance_date).toBe(disappeared.disappearance_date)
-    expect(view.mobile_contact).toBe(disappeared.mobile_contact)
+    expect(view.date).toBe(disappeared.date)
+    expect(view.obs).toBe(disappeared.obs)
+    expect(view.status).toBe(disappeared.status)
     expect(view.createdAt).toBeTruthy()
     expect(view.updatedAt).toBeTruthy()
   })
