@@ -34,27 +34,28 @@ exports.Disappeared = _model2.default;
 var router = new _express.Router();
 var _schema$tree = _model.schema.tree,
     name = _schema$tree.name,
-    birth_date = _schema$tree.birth_date,
-    disappearance_date = _schema$tree.disappearance_date,
-    mobile_contact = _schema$tree.mobile_contact;
+    bornAt = _schema$tree.bornAt,
+    obs = _schema$tree.obs,
+    policeDocument = _schema$tree.policeDocument,
+    status = _schema$tree.status;
 
 /**
  * @api {post} /disappeareds Create disappeared
  * @apiName CreateDisappeared
  * @apiGroup Disappeared
  * @apiPermission user
- * @apiParam {String} access_token user access token.
+ * @apiParam {String} token user access token.
  * @apiParam name Disappeared's name.
- * @apiParam birth_date Disappeared's birth_date.
- * @apiParam disappearance_date Disappeared's disappearance_date.
- * @apiParam mobile_contact Disappeared's mobile_contact.
+ * @apiParam bornAt Disappeared's bornAt.
+ * @apiParam obs Disappeared's obs.
+ * @apiParam status Disappeared's status.
  * @apiSuccess {Object} disappeared Disappeared's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Disappeared not found.
  * @apiError 401 user access only.
  */
 
-router.post('/', (0, _passport.token)({ required: true }), (0, _bodymen.middleware)({ name: name, birth_date: birth_date, disappearance_date: disappearance_date, mobile_contact: mobile_contact }), _controller.create);
+router.post('/', (0, _passport.token)({ required: true }), (0, _bodymen.middleware)({ name: name, bornAt: bornAt, obs: obs, policeDocument: policeDocument, status: status }), _controller.create);
 
 /**
  * @api {get} /disappeareds Retrieve disappeareds
@@ -81,24 +82,24 @@ router.get('/:id', _controller.show);
  * @apiName UpdateDisappeared
  * @apiGroup Disappeared
  * @apiPermission user
- * @apiParam {String} access_token user access token.
+ * @apiParam {String} token user access token.
  * @apiParam name Disappeared's name.
- * @apiParam birth_date Disappeared's birth_date.
- * @apiParam disappearance_date Disappeared's disappearance_date.
- * @apiParam mobile_contact Disappeared's mobile_contact.
+ * @apiParam bornAt Disappeared's bornAt.
+ * @apiParam obs Disappeared's obs.
+ * @apiParam status Disappeared's status.
  * @apiSuccess {Object} disappeared Disappeared's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Disappeared not found.
  * @apiError 401 user access only.
  */
-router.put('/:id', (0, _passport.token)({ required: true }), (0, _bodymen.middleware)({ name: name, birth_date: birth_date, disappearance_date: disappearance_date, mobile_contact: mobile_contact }), _controller.update);
+router.put('/:id', (0, _passport.token)({ required: true }), (0, _bodymen.middleware)({ name: name, bornAt: bornAt, obs: obs, policeDocument: policeDocument, status: status }), _controller.update);
 
 /**
  * @api {delete} /disappeareds/:id Delete disappeared
  * @apiName DeleteDisappeared
  * @apiGroup Disappeared
  * @apiPermission user
- * @apiParam {String} access_token user access token.
+ * @apiParam {String} token user access token.
  * @apiSuccess (Success 204) 204 No Content.
  * @apiError 404 Disappeared not found.
  * @apiError 401 user access only.

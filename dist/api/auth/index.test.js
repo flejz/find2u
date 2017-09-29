@@ -65,7 +65,7 @@ test('POST /auth 201 (master)', (0, _asyncToGenerator3.default)( /*#__PURE__*/_r
       switch (_context2.prev = _context2.next) {
         case 0:
           _context2.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').query({ access_token: _config.masterKey }).auth('a@a.com', '123456');
+          return (0, _supertestAsPromised2.default)(app()).post('/').query({ token: _config.masterKey }).auth('a@a.com', '123456');
 
         case 2:
           _ref3 = _context2.sent;
@@ -101,7 +101,7 @@ test('POST /auth 400 (master) - invalid email', (0, _asyncToGenerator3.default)(
       switch (_context3.prev = _context3.next) {
         case 0:
           _context3.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').query({ access_token: _config.masterKey }).auth('invalid', '123456');
+          return (0, _supertestAsPromised2.default)(app()).post('/').query({ token: _config.masterKey }).auth('invalid', '123456');
 
         case 2:
           _ref5 = _context3.sent;
@@ -128,7 +128,7 @@ test('POST /auth 400 (master) - invalid password', (0, _asyncToGenerator3.defaul
       switch (_context4.prev = _context4.next) {
         case 0:
           _context4.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').query({ access_token: _config.masterKey }).auth('a@a.com', '123');
+          return (0, _supertestAsPromised2.default)(app()).post('/').query({ token: _config.masterKey }).auth('a@a.com', '123');
 
         case 2:
           _ref7 = _context4.sent;
@@ -155,7 +155,7 @@ test('POST /auth 401 (master) - user does not exist', (0, _asyncToGenerator3.def
       switch (_context5.prev = _context5.next) {
         case 0:
           _context5.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').query({ access_token: _config.masterKey }).auth('b@b.com', '123456');
+          return (0, _supertestAsPromised2.default)(app()).post('/').query({ token: _config.masterKey }).auth('b@b.com', '123456');
 
         case 2:
           _ref9 = _context5.sent;
@@ -179,7 +179,7 @@ test('POST /auth 401 (master) - wrong password', (0, _asyncToGenerator3.default)
       switch (_context6.prev = _context6.next) {
         case 0:
           _context6.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').query({ access_token: _config.masterKey }).auth('a@a.com', '654321');
+          return (0, _supertestAsPromised2.default)(app()).post('/').query({ token: _config.masterKey }).auth('a@a.com', '654321');
 
         case 2:
           _ref11 = _context6.sent;
@@ -195,7 +195,7 @@ test('POST /auth 401 (master) - wrong password', (0, _asyncToGenerator3.default)
   }, _callee6, undefined);
 })));
 
-test('POST /auth 401 (master) - missing access_token', (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7() {
+test('POST /auth 401 (master) - missing token', (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee7() {
   var _ref13, status;
 
   return _regenerator2.default.wrap(function _callee7$(_context7) {
@@ -227,7 +227,7 @@ test('POST /auth 401 (master) - missing auth', (0, _asyncToGenerator3.default)( 
       switch (_context8.prev = _context8.next) {
         case 0:
           _context8.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').query({ access_token: _config.masterKey });
+          return (0, _supertestAsPromised2.default)(app()).post('/').query({ token: _config.masterKey });
 
         case 2:
           _ref15 = _context8.sent;

@@ -79,7 +79,7 @@ test('POST /disappeareds 201 (user)', (0, _asyncToGenerator3.default)( /*#__PURE
       switch (_context2.prev = _context2.next) {
         case 0:
           _context2.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').send({ access_token: userSession, name: 'test', birth_date: 'test', disappearance_date: 'test', mobile_contact: 'test' });
+          return (0, _supertestAsPromised2.default)(app()).post('/').send({ token: userSession, name: 'test', birth_date: 'test', date: 'test', obs: 'test', status: 'test' });
 
         case 2:
           _ref3 = _context2.sent;
@@ -90,11 +90,12 @@ test('POST /disappeareds 201 (user)', (0, _asyncToGenerator3.default)( /*#__PURE
           expect(typeof body === 'undefined' ? 'undefined' : (0, _typeof3.default)(body)).toEqual('object');
           expect(body.name).toEqual('test');
           expect(body.birth_date).toEqual('test');
-          expect(body.disappearance_date).toEqual('test');
-          expect(body.mobile_contact).toEqual('test');
+          expect(body.date).toEqual('test');
+          expect(body.obs).toEqual('test');
+          expect(body.status).toEqual('test');
           expect((0, _typeof3.default)(body.user)).toEqual('object');
 
-        case 12:
+        case 13:
         case 'end':
           return _context2.stop();
       }
@@ -211,7 +212,7 @@ test('PUT /disappeareds/:id 200 (user)', (0, _asyncToGenerator3.default)( /*#__P
       switch (_context7.prev = _context7.next) {
         case 0:
           _context7.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).put('/' + disappeared.id).send({ access_token: userSession, name: 'test', birth_date: 'test', disappearance_date: 'test', mobile_contact: 'test' });
+          return (0, _supertestAsPromised2.default)(app()).put('/' + disappeared.id).send({ token: userSession, name: 'test', birth_date: 'test', date: 'test', obs: 'test', status: 'test' });
 
         case 2:
           _ref13 = _context7.sent;
@@ -223,11 +224,12 @@ test('PUT /disappeareds/:id 200 (user)', (0, _asyncToGenerator3.default)( /*#__P
           expect(body.id).toEqual(disappeared.id);
           expect(body.name).toEqual('test');
           expect(body.birth_date).toEqual('test');
-          expect(body.disappearance_date).toEqual('test');
-          expect(body.mobile_contact).toEqual('test');
+          expect(body.date).toEqual('test');
+          expect(body.obs).toEqual('test');
+          expect(body.status).toEqual('test');
           expect((0, _typeof3.default)(body.user)).toEqual('object');
 
-        case 13:
+        case 14:
         case 'end':
           return _context7.stop();
       }
@@ -243,7 +245,7 @@ test('PUT /disappeareds/:id 401 (user) - another user', (0, _asyncToGenerator3.d
       switch (_context8.prev = _context8.next) {
         case 0:
           _context8.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).put('/' + disappeared.id).send({ access_token: anotherSession, name: 'test', birth_date: 'test', disappearance_date: 'test', mobile_contact: 'test' });
+          return (0, _supertestAsPromised2.default)(app()).put('/' + disappeared.id).send({ token: anotherSession, name: 'test', birth_date: 'test', date: 'test', obs: 'test', status: 'test' });
 
         case 2:
           _ref15 = _context8.sent;
@@ -291,7 +293,7 @@ test('PUT /disappeareds/:id 404 (user)', (0, _asyncToGenerator3.default)( /*#__P
       switch (_context10.prev = _context10.next) {
         case 0:
           _context10.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).put('/123456789098765432123456').send({ access_token: anotherSession, name: 'test', birth_date: 'test', disappearance_date: 'test', mobile_contact: 'test' });
+          return (0, _supertestAsPromised2.default)(app()).put('/123456789098765432123456').send({ token: anotherSession, name: 'test', birth_date: 'test', date: 'test', obs: 'test', status: 'test' });
 
         case 2:
           _ref19 = _context10.sent;
@@ -315,7 +317,7 @@ test('DELETE /disappeareds/:id 204 (user)', (0, _asyncToGenerator3.default)( /*#
       switch (_context11.prev = _context11.next) {
         case 0:
           _context11.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).delete('/' + disappeared.id).query({ access_token: userSession });
+          return (0, _supertestAsPromised2.default)(app()).delete('/' + disappeared.id).query({ token: userSession });
 
         case 2:
           _ref21 = _context11.sent;
@@ -339,7 +341,7 @@ test('DELETE /disappeareds/:id 401 (user) - another user', (0, _asyncToGenerator
       switch (_context12.prev = _context12.next) {
         case 0:
           _context12.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).delete('/' + disappeared.id).send({ access_token: anotherSession });
+          return (0, _supertestAsPromised2.default)(app()).delete('/' + disappeared.id).send({ token: anotherSession });
 
         case 2:
           _ref23 = _context12.sent;
@@ -387,7 +389,7 @@ test('DELETE /disappeareds/:id 404 (user)', (0, _asyncToGenerator3.default)( /*#
       switch (_context14.prev = _context14.next) {
         case 0:
           _context14.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).delete('/123456789098765432123456').query({ access_token: anotherSession });
+          return (0, _supertestAsPromised2.default)(app()).delete('/123456789098765432123456').query({ token: anotherSession });
 
         case 2:
           _ref27 = _context14.sent;

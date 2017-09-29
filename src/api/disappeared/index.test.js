@@ -19,7 +19,7 @@ beforeEach(async () => {
 test('POST /disappeareds 201 (user)', async () => {
   const { status, body } = await request(app())
     .post('/')
-    .send({ access_token: userSession, name: 'test', birth_date: 'test', date: 'test', obs: 'test', status: 'test' })
+    .send({ token: userSession, name: 'test', birth_date: 'test', date: 'test', obs: 'test', status: 'test' })
   expect(status).toBe(201)
   expect(typeof body).toEqual('object')
   expect(body.name).toEqual('test')
@@ -60,7 +60,7 @@ test('GET /disappeareds/:id 404', async () => {
 test('PUT /disappeareds/:id 200 (user)', async () => {
   const { status, body } = await request(app())
     .put(`/${disappeared.id}`)
-    .send({ access_token: userSession, name: 'test', birth_date: 'test', date: 'test', obs: 'test', status: 'test' })
+    .send({ token: userSession, name: 'test', birth_date: 'test', date: 'test', obs: 'test', status: 'test' })
   expect(status).toBe(200)
   expect(typeof body).toEqual('object')
   expect(body.id).toEqual(disappeared.id)
@@ -75,7 +75,7 @@ test('PUT /disappeareds/:id 200 (user)', async () => {
 test('PUT /disappeareds/:id 401 (user) - another user', async () => {
   const { status } = await request(app())
     .put(`/${disappeared.id}`)
-    .send({ access_token: anotherSession, name: 'test', birth_date: 'test', date: 'test', obs: 'test', status: 'test' })
+    .send({ token: anotherSession, name: 'test', birth_date: 'test', date: 'test', obs: 'test', status: 'test' })
   expect(status).toBe(401)
 })
 
@@ -88,21 +88,21 @@ test('PUT /disappeareds/:id 401', async () => {
 test('PUT /disappeareds/:id 404 (user)', async () => {
   const { status } = await request(app())
     .put('/123456789098765432123456')
-    .send({ access_token: anotherSession, name: 'test', birth_date: 'test', date: 'test', obs: 'test', status: 'test' })
+    .send({ token: anotherSession, name: 'test', birth_date: 'test', date: 'test', obs: 'test', status: 'test' })
   expect(status).toBe(404)
 })
 
 test('DELETE /disappeareds/:id 204 (user)', async () => {
   const { status } = await request(app())
     .delete(`/${disappeared.id}`)
-    .query({ access_token: userSession })
+    .query({ token: userSession })
   expect(status).toBe(204)
 })
 
 test('DELETE /disappeareds/:id 401 (user) - another user', async () => {
   const { status } = await request(app())
     .delete(`/${disappeared.id}`)
-    .send({ access_token: anotherSession })
+    .send({ token: anotherSession })
   expect(status).toBe(401)
 })
 
@@ -115,6 +115,6 @@ test('DELETE /disappeareds/:id 401', async () => {
 test('DELETE /disappeareds/:id 404 (user)', async () => {
   const { status } = await request(app())
     .delete('/123456789098765432123456')
-    .query({ access_token: anotherSession })
+    .query({ token: anotherSession })
   expect(status).toBe(404)
 })

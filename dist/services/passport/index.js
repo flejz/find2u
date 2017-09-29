@@ -53,6 +53,7 @@ var token = exports.token = function token() {
 
   return function (req, res, next) {
     return _passport2.default.authenticate('token', { session: false }, function (err, user, info) {
+
       if (err || required && !user || required && !~roles.indexOf(user.role)) {
         return res.status(401).end();
       }
@@ -96,9 +97,10 @@ _passport2.default.use('master', new _passportHttpBearer.Strategy(function (toke
 
 _passport2.default.use('token', new _passportJwt.Strategy({
   secretOrKey: _config.jwtSecret,
-  jwtFromRequest: _passportJwt.ExtractJwt.fromExtractors([_passportJwt.ExtractJwt.fromUrlQueryParameter('access_token'), _passportJwt.ExtractJwt.fromBodyField('access_token'), _passportJwt.ExtractJwt.fromAuthHeaderWithScheme('Bearer')])
+  jwtFromRequest: _passportJwt.ExtractJwt.fromExtractors([_passportJwt.ExtractJwt.fromUrlQueryParameter('token'), _passportJwt.ExtractJwt.fromBodyField('token'), _passportJwt.ExtractJwt.fromAuthHeaderWithScheme('Bearer')])
 }, function (_ref2, done) {
   var id = _ref2.id;
+
 
   _model2.default.findById(id).then(function (user) {
     done(null, user);

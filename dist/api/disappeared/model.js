@@ -22,16 +22,22 @@ var disappearedSchema = new _mongoose.Schema({
     required: true
   },
   name: {
+    type: String,
+    required: true
+  },
+  bornAt: {
+    type: Date,
+    required: true
+  },
+  obs: {
     type: String
   },
-  birth_date: {
+  policeDocument: {
     type: String
   },
-  disappearance_date: {
-    type: String
-  },
-  mobile_contact: {
-    type: String
+  status: {
+    type: String,
+    required: true
   }
 }, {
   timestamps: true
@@ -44,9 +50,10 @@ disappearedSchema.methods = {
       id: this.id,
       user: this.user.view(full),
       name: this.name,
-      birth_date: this.birth_date,
-      disappearance_date: this.disappearance_date,
-      mobile_contact: this.mobile_contact,
+      bornAt: this.bornAt,
+      obs: this.obs,
+      policeDocument: this.policeDocument,
+      status: this.status,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     };

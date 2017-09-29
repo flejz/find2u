@@ -86,7 +86,7 @@ test('GET /users 200 (admin)', (0, _asyncToGenerator3.default)( /*#__PURE__*/_re
       switch (_context2.prev = _context2.next) {
         case 0:
           _context2.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).get('/').query({ access_token: adminSession });
+          return (0, _supertestAsPromised2.default)(app()).get('/').query({ token: adminSession });
 
         case 2:
           _ref3 = _context2.sent;
@@ -112,7 +112,7 @@ test('GET /users?page=2&limit=1 200 (admin)', (0, _asyncToGenerator3.default)( /
       switch (_context3.prev = _context3.next) {
         case 0:
           _context3.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).get('/').query({ access_token: adminSession, page: 2, limit: 1 });
+          return (0, _supertestAsPromised2.default)(app()).get('/').query({ token: adminSession, page: 2, limit: 1 });
 
         case 2:
           _ref5 = _context3.sent;
@@ -139,7 +139,7 @@ test('GET /users?q=user 200 (admin)', (0, _asyncToGenerator3.default)( /*#__PURE
       switch (_context4.prev = _context4.next) {
         case 0:
           _context4.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).get('/').query({ access_token: adminSession, q: 'user' });
+          return (0, _supertestAsPromised2.default)(app()).get('/').query({ token: adminSession, q: 'user' });
 
         case 2:
           _ref7 = _context4.sent;
@@ -166,7 +166,7 @@ test('GET /users?fields=name 200 (admin)', (0, _asyncToGenerator3.default)( /*#_
       switch (_context5.prev = _context5.next) {
         case 0:
           _context5.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).get('/').query({ access_token: adminSession, fields: 'name' });
+          return (0, _supertestAsPromised2.default)(app()).get('/').query({ token: adminSession, fields: 'name' });
 
         case 2:
           _ref9 = _context5.sent;
@@ -193,7 +193,7 @@ test('GET /users 401 (user)', (0, _asyncToGenerator3.default)( /*#__PURE__*/_reg
       switch (_context6.prev = _context6.next) {
         case 0:
           _context6.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).get('/').query({ access_token: session1 });
+          return (0, _supertestAsPromised2.default)(app()).get('/').query({ token: session1 });
 
         case 2:
           _ref11 = _context6.sent;
@@ -241,7 +241,7 @@ test('GET /users/me 200 (user)', (0, _asyncToGenerator3.default)( /*#__PURE__*/_
       switch (_context8.prev = _context8.next) {
         case 0:
           _context8.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).get('/me').query({ access_token: session1 });
+          return (0, _supertestAsPromised2.default)(app()).get('/me').query({ token: session1 });
 
         case 2:
           _ref15 = _context8.sent;
@@ -343,7 +343,7 @@ test('POST /users 201 (master)', (0, _asyncToGenerator3.default)( /*#__PURE__*/_
       switch (_context12.prev = _context12.next) {
         case 0:
           _context12.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').send({ access_token: _config.masterKey, email: 'd@d.com', password: '123456' });
+          return (0, _supertestAsPromised2.default)(app()).post('/').send({ token: _config.masterKey, email: 'd@d.com', password: '123456' });
 
         case 2:
           _ref23 = _context12.sent;
@@ -370,7 +370,7 @@ test('POST /users 201 (master)', (0, _asyncToGenerator3.default)( /*#__PURE__*/_
       switch (_context13.prev = _context13.next) {
         case 0:
           _context13.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').send({ access_token: _config.masterKey, email: 'd@d.com', password: '123456', role: 'user' });
+          return (0, _supertestAsPromised2.default)(app()).post('/').send({ token: _config.masterKey, email: 'd@d.com', password: '123456', role: 'user' });
 
         case 2:
           _ref25 = _context13.sent;
@@ -397,7 +397,7 @@ test('POST /users 201 (master)', (0, _asyncToGenerator3.default)( /*#__PURE__*/_
       switch (_context14.prev = _context14.next) {
         case 0:
           _context14.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').send({ access_token: _config.masterKey, email: 'd@d.com', password: '123456', role: 'admin' });
+          return (0, _supertestAsPromised2.default)(app()).post('/').send({ token: _config.masterKey, email: 'd@d.com', password: '123456', role: 'admin' });
 
         case 2:
           _ref27 = _context14.sent;
@@ -424,7 +424,7 @@ test('POST /users 409 (master) - duplicated email', (0, _asyncToGenerator3.defau
       switch (_context15.prev = _context15.next) {
         case 0:
           _context15.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').send({ access_token: _config.masterKey, email: 'a@a.com', password: '123456' });
+          return (0, _supertestAsPromised2.default)(app()).post('/').send({ token: _config.masterKey, email: 'a@a.com', password: '123456' });
 
         case 2:
           _ref29 = _context15.sent;
@@ -451,7 +451,7 @@ test('POST /users 400 (master) - invalid email', (0, _asyncToGenerator3.default)
       switch (_context16.prev = _context16.next) {
         case 0:
           _context16.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').send({ access_token: _config.masterKey, email: 'invalid', password: '123456' });
+          return (0, _supertestAsPromised2.default)(app()).post('/').send({ token: _config.masterKey, email: 'invalid', password: '123456' });
 
         case 2:
           _ref31 = _context16.sent;
@@ -478,7 +478,7 @@ test('POST /users 400 (master) - missing email', (0, _asyncToGenerator3.default)
       switch (_context17.prev = _context17.next) {
         case 0:
           _context17.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').send({ access_token: _config.masterKey, password: '123456' });
+          return (0, _supertestAsPromised2.default)(app()).post('/').send({ token: _config.masterKey, password: '123456' });
 
         case 2:
           _ref33 = _context17.sent;
@@ -505,7 +505,7 @@ test('POST /users 400 (master) - invalid password', (0, _asyncToGenerator3.defau
       switch (_context18.prev = _context18.next) {
         case 0:
           _context18.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').send({ access_token: _config.masterKey, email: 'd@d.com', password: '123' });
+          return (0, _supertestAsPromised2.default)(app()).post('/').send({ token: _config.masterKey, email: 'd@d.com', password: '123' });
 
         case 2:
           _ref35 = _context18.sent;
@@ -532,7 +532,7 @@ test('POST /users 400 (master) - missing password', (0, _asyncToGenerator3.defau
       switch (_context19.prev = _context19.next) {
         case 0:
           _context19.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').send({ access_token: _config.masterKey, email: 'd@d.com' });
+          return (0, _supertestAsPromised2.default)(app()).post('/').send({ token: _config.masterKey, email: 'd@d.com' });
 
         case 2:
           _ref37 = _context19.sent;
@@ -559,7 +559,7 @@ test('POST /users 400 (master) - invalid role', (0, _asyncToGenerator3.default)(
       switch (_context20.prev = _context20.next) {
         case 0:
           _context20.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').send({ access_token: _config.masterKey, email: 'd@d.com', password: '123456', role: 'invalid' });
+          return (0, _supertestAsPromised2.default)(app()).post('/').send({ token: _config.masterKey, email: 'd@d.com', password: '123456', role: 'invalid' });
 
         case 2:
           _ref39 = _context20.sent;
@@ -586,7 +586,7 @@ test('POST /users 401 (admin)', (0, _asyncToGenerator3.default)( /*#__PURE__*/_r
       switch (_context21.prev = _context21.next) {
         case 0:
           _context21.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').send({ access_token: adminSession, email: 'd@d.com', password: '123456' });
+          return (0, _supertestAsPromised2.default)(app()).post('/').send({ token: adminSession, email: 'd@d.com', password: '123456' });
 
         case 2:
           _ref41 = _context21.sent;
@@ -610,7 +610,7 @@ test('POST /users 401 (user)', (0, _asyncToGenerator3.default)( /*#__PURE__*/_re
       switch (_context22.prev = _context22.next) {
         case 0:
           _context22.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).post('/').send({ access_token: session1, email: 'd@d.com', password: '123456' });
+          return (0, _supertestAsPromised2.default)(app()).post('/').send({ token: session1, email: 'd@d.com', password: '123456' });
 
         case 2:
           _ref43 = _context22.sent;
@@ -658,7 +658,7 @@ test('PUT /users/me 200 (user)', (0, _asyncToGenerator3.default)( /*#__PURE__*/_
       switch (_context24.prev = _context24.next) {
         case 0:
           _context24.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).put('/me').send({ access_token: session1, name: 'test' });
+          return (0, _supertestAsPromised2.default)(app()).put('/me').send({ token: session1, name: 'test' });
 
         case 2:
           _ref47 = _context24.sent;
@@ -685,7 +685,7 @@ test('PUT /users/me 200 (user)', (0, _asyncToGenerator3.default)( /*#__PURE__*/_
       switch (_context25.prev = _context25.next) {
         case 0:
           _context25.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).put('/me').send({ access_token: session1, email: 'test@test.com' });
+          return (0, _supertestAsPromised2.default)(app()).put('/me').send({ token: session1, email: 'test@test.com' });
 
         case 2:
           _ref49 = _context25.sent;
@@ -736,7 +736,7 @@ test('PUT /users/:id 200 (user)', (0, _asyncToGenerator3.default)( /*#__PURE__*/
       switch (_context27.prev = _context27.next) {
         case 0:
           _context27.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).put('/' + user1.id).send({ access_token: session1, name: 'test' });
+          return (0, _supertestAsPromised2.default)(app()).put('/' + user1.id).send({ token: session1, name: 'test' });
 
         case 2:
           _ref53 = _context27.sent;
@@ -763,7 +763,7 @@ test('PUT /users/:id 200 (user)', (0, _asyncToGenerator3.default)( /*#__PURE__*/
       switch (_context28.prev = _context28.next) {
         case 0:
           _context28.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).put('/' + user1.id).send({ access_token: session1, email: 'test@test.com' });
+          return (0, _supertestAsPromised2.default)(app()).put('/' + user1.id).send({ token: session1, email: 'test@test.com' });
 
         case 2:
           _ref55 = _context28.sent;
@@ -790,7 +790,7 @@ test('PUT /users/:id 200 (admin)', (0, _asyncToGenerator3.default)( /*#__PURE__*
       switch (_context29.prev = _context29.next) {
         case 0:
           _context29.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).put('/' + user1.id).send({ access_token: adminSession, name: 'test' });
+          return (0, _supertestAsPromised2.default)(app()).put('/' + user1.id).send({ token: adminSession, name: 'test' });
 
         case 2:
           _ref57 = _context29.sent;
@@ -817,7 +817,7 @@ test('PUT /users/:id 401 (user) - another user', (0, _asyncToGenerator3.default)
       switch (_context30.prev = _context30.next) {
         case 0:
           _context30.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).put('/' + user1.id).send({ access_token: session2, name: 'test' });
+          return (0, _supertestAsPromised2.default)(app()).put('/' + user1.id).send({ token: session2, name: 'test' });
 
         case 2:
           _ref59 = _context30.sent;
@@ -865,7 +865,7 @@ test('PUT /users/:id 404 (admin)', (0, _asyncToGenerator3.default)( /*#__PURE__*
       switch (_context32.prev = _context32.next) {
         case 0:
           _context32.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).put('/123456789098765432123456').send({ access_token: adminSession, name: 'test' });
+          return (0, _supertestAsPromised2.default)(app()).put('/123456789098765432123456').send({ token: adminSession, name: 'test' });
 
         case 2:
           _ref63 = _context32.sent;
@@ -981,7 +981,7 @@ test('PUT /users/me/password 401 (user) - invalid authentication method', (0, _a
       switch (_context36.prev = _context36.next) {
         case 0:
           _context36.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).put('/me/password').send({ access_token: session1, password: '654321' });
+          return (0, _supertestAsPromised2.default)(app()).put('/me/password').send({ token: session1, password: '654321' });
 
         case 2:
           _ref70 = _context36.sent;
@@ -1114,7 +1114,7 @@ test('PUT /users/:id/password 401 (user) - invalid authentication method', (0, _
       switch (_context41.prev = _context41.next) {
         case 0:
           _context41.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).put('/' + user1.id + '/password').send({ access_token: session1, password: '654321' });
+          return (0, _supertestAsPromised2.default)(app()).put('/' + user1.id + '/password').send({ token: session1, password: '654321' });
 
         case 2:
           _ref80 = _context41.sent;
@@ -1186,7 +1186,7 @@ test('DELETE /users/:id 204 (admin)', (0, _asyncToGenerator3.default)( /*#__PURE
       switch (_context44.prev = _context44.next) {
         case 0:
           _context44.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).delete('/' + user1.id).send({ access_token: adminSession });
+          return (0, _supertestAsPromised2.default)(app()).delete('/' + user1.id).send({ token: adminSession });
 
         case 2:
           _ref86 = _context44.sent;
@@ -1210,7 +1210,7 @@ test('DELETE /users/:id 401 (user)', (0, _asyncToGenerator3.default)( /*#__PURE_
       switch (_context45.prev = _context45.next) {
         case 0:
           _context45.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).delete('/' + user1.id).send({ access_token: session1 });
+          return (0, _supertestAsPromised2.default)(app()).delete('/' + user1.id).send({ token: session1 });
 
         case 2:
           _ref88 = _context45.sent;
@@ -1258,7 +1258,7 @@ test('DELETE /users/:id 404 (admin)', (0, _asyncToGenerator3.default)( /*#__PURE
       switch (_context47.prev = _context47.next) {
         case 0:
           _context47.next = 2;
-          return (0, _supertestAsPromised2.default)(app()).delete('/123456789098765432123456').send({ access_token: adminSession });
+          return (0, _supertestAsPromised2.default)(app()).delete('/123456789098765432123456').send({ token: adminSession });
 
         case 2:
           _ref92 = _context47.sent;

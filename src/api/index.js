@@ -7,17 +7,7 @@ const router = new Router()
 
 /**
  * @apiDefine master Master access only
- * You must pass `access_token` parameter or a Bearer Token authorization header
- * to access this endpoint.
- */
-/**
- * @apiDefine admin Admin access only
- * You must pass `access_token` parameter or a Bearer Token authorization header
- * to access this endpoint.
- */
-/**
- * @apiDefine user User access only
- * You must pass `access_token` parameter or a Bearer Token authorization header
+ * You must pass `token` parameter or a Bearer Token authorization header
  * to access this endpoint.
  */
 /**

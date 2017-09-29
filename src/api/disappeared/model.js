@@ -7,19 +7,22 @@ const disappearedSchema = new Schema({
     required: true
   },
   name: {
-    type: String
+    type: String,
+    required: true
   },
-  birth_date: {
-    type: String
-  },
-  date: {
-    type: String
+  bornAt: {
+    type: Date,
+    required: true
   },
   obs: {
     type: String
   },
-  status: {
+  policeDocument: {
     type: String
+  },
+  status: {
+    type: String,
+    required: true
   }
 }, {
   timestamps: true
@@ -32,9 +35,9 @@ disappearedSchema.methods = {
       id: this.id,
       user: this.user.view(full),
       name: this.name,
-      birth_date: this.birth_date,
-      date: this.date,
+      bornAt: this.bornAt,
       obs: this.obs,
+      policeDocument: this.policeDocument,
       status: this.status,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt

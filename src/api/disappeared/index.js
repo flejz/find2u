@@ -7,17 +7,16 @@ import { schema } from './model'
 export Disappeared, { schema } from './model'
 
 const router = new Router()
-const { name, birth_date, date, obs, status } = schema.tree
+const { name, bornAt, obs, policeDocument, status } = schema.tree
 
 /**
  * @api {post} /disappeareds Create disappeared
  * @apiName CreateDisappeared
  * @apiGroup Disappeared
  * @apiPermission user
- * @apiParam {String} access_token user access token.
+ * @apiParam {String} token user access token.
  * @apiParam name Disappeared's name.
- * @apiParam birth_date Disappeared's birth_date.
- * @apiParam date Disappeared's date.
+ * @apiParam bornAt Disappeared's bornAt.
  * @apiParam obs Disappeared's obs.
  * @apiParam status Disappeared's status.
  * @apiSuccess {Object} disappeared Disappeared's data.
@@ -27,7 +26,7 @@ const { name, birth_date, date, obs, status } = schema.tree
  */
 router.post('/',
   token({ required: true }),
-  body({ name, birth_date, date, obs, status }),
+  body({ name, bornAt, obs, policeDocument, status }),
   create)
 
 /**
@@ -58,10 +57,9 @@ router.get('/:id',
  * @apiName UpdateDisappeared
  * @apiGroup Disappeared
  * @apiPermission user
- * @apiParam {String} access_token user access token.
+ * @apiParam {String} token user access token.
  * @apiParam name Disappeared's name.
- * @apiParam birth_date Disappeared's birth_date.
- * @apiParam date Disappeared's date.
+ * @apiParam bornAt Disappeared's bornAt.
  * @apiParam obs Disappeared's obs.
  * @apiParam status Disappeared's status.
  * @apiSuccess {Object} disappeared Disappeared's data.
@@ -71,7 +69,7 @@ router.get('/:id',
  */
 router.put('/:id',
   token({ required: true }),
-  body({ name, birth_date, date, obs, status }),
+  body({ name, bornAt, obs, policeDocument, status }),
   update)
 
 /**
@@ -79,7 +77,7 @@ router.put('/:id',
  * @apiName DeleteDisappeared
  * @apiGroup Disappeared
  * @apiPermission user
- * @apiParam {String} access_token user access token.
+ * @apiParam {String} token user access token.
  * @apiSuccess (Success 204) 204 No Content.
  * @apiError 404 Disappeared not found.
  * @apiError 401 user access only.

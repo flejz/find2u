@@ -22,6 +22,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var create = exports.create = function create(_ref, res, next) {
   var user = _ref.user,
       body = _ref.bodymen.body;
+
+
+  console.log(body);
+
   return _2.Disappeared.create((0, _extends3.default)({}, body, { user: user })).then(function (disappeared) {
     return disappeared.view(true);
   }).then((0, _response.success)(res, 201)).catch(next);

@@ -2,11 +2,15 @@ import _ from 'lodash'
 import { success, notFound, authorOrAdmin } from '../../services/response/'
 import { Disappeared } from '.'
 
-export const create = ({ user, bodymen: { body } }, res, next) =>
-  Disappeared.create({ ...body, user })
+export const create = ({ user, bodymen: { body } }, res, next) => {
+
+  console.log(body)
+
+  return Disappeared.create({ ...body, user })
     .then((disappeared) => disappeared.view(true))
     .then(success(res, 201))
     .catch(next)
+}
 
 export const index = ({ querymen: { query, select, cursor } }, res, next) =>
   Disappeared.find(query, select, cursor)

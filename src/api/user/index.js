@@ -14,7 +14,7 @@ const { email, password, name, picture, role } = schema.tree
  * @apiName RetrieveUsers
  * @apiGroup User
  * @apiPermission admin
- * @apiParam {String} access_token User access_token.
+ * @apiParam {String} token User token.
  * @apiUse listParams
  * @apiSuccess {Object[]} users List of users.
  * @apiError {Object} 400 Some parameters may contain invalid values.
@@ -30,7 +30,7 @@ router.get('/',
  * @apiName RetrieveCurrentUser
  * @apiGroup User
  * @apiPermission user
- * @apiParam {String} access_token User access_token.
+ * @apiParam {String} token User token.
  * @apiSuccess {Object} user User's data.
  */
 router.get('/me',
@@ -53,7 +53,7 @@ router.get('/:id',
  * @apiName CreateUser
  * @apiGroup User
  * @apiPermission master
- * @apiParam {String} access_token Master access_token.
+ * @apiParam {String} token Master token.
  * @apiParam {String} email User's email.
  * @apiParam {String{6..}} password User's password.
  * @apiParam {String} [name] User's name.
@@ -74,7 +74,7 @@ router.post('/',
  * @apiName UpdateUser
  * @apiGroup User
  * @apiPermission user
- * @apiParam {String} access_token User access_token.
+ * @apiParam {String} token User token.
  * @apiParam {String} [name] User's name.
  * @apiParam {String} [picture] User's picture.
  * @apiSuccess {Object} user User's data.
@@ -108,7 +108,7 @@ router.put('/:id/password',
  * @apiName DeleteUser
  * @apiGroup User
  * @apiPermission admin
- * @apiParam {String} access_token User access_token.
+ * @apiParam {String} token User token.
  * @apiSuccess (Success 204) 204 No Content.
  * @apiError 401 Admin access only.
  * @apiError 404 User not found.

@@ -24,6 +24,7 @@ export const master = () =>
 
 export const token = ({ required, roles = User.roles } = {}) => (req, res, next) =>
   passport.authenticate('token', { session: false }, (err, user, info) => {
+
     if (err || (required && !user) || (required && !~roles.indexOf(user.role))) {
       return res.status(401).end()
     }
@@ -66,11 +67,12 @@ passport.use('master', new BearerStrategy((token, done) => {
 passport.use('token', new JwtStrategy({
   secretOrKey: jwtSecret,
   jwtFromRequest: ExtractJwt.fromExtractors([
-    ExtractJwt.fromUrlQueryParameter('access_token'),
-    ExtractJwt.fromBodyField('access_token'),
+    ExtractJwt.fromUrlQueryParameter('token'),
+    ExtractJwt.fromBodyField('token'),
     ExtractJwt.fromAuthHeaderWithScheme('Bearer')
   ])
 }, ({ id }, done) => {
+
   User.findById(id).then((user) => {
     done(null, user)
     return null

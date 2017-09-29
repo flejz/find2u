@@ -32,7 +32,7 @@ beforeEach((0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.m
         case 2:
           user = _context.sent;
           _context.next = 5;
-          return _.Disappeared.create({ user: user, name: 'test', birth_date: 'test', disappearance_date: 'test', mobile_contact: 'test' });
+          return _.Disappeared.create({ user: user, name: 'test', birth_date: 'test', date: 'test', obs: 'test', status: 'test' });
 
         case 5:
           disappeared = _context.sent;
@@ -54,8 +54,9 @@ describe('view', function () {
     expect(view.user.id).toBe(user.id);
     expect(view.name).toBe(disappeared.name);
     expect(view.birth_date).toBe(disappeared.birth_date);
-    expect(view.disappearance_date).toBe(disappeared.disappearance_date);
-    expect(view.mobile_contact).toBe(disappeared.mobile_contact);
+    expect(view.date).toBe(disappeared.date);
+    expect(view.obs).toBe(disappeared.obs);
+    expect(view.status).toBe(disappeared.status);
     expect(view.createdAt).toBeTruthy();
     expect(view.updatedAt).toBeTruthy();
   });
@@ -68,8 +69,9 @@ describe('view', function () {
     expect(view.user.id).toBe(user.id);
     expect(view.name).toBe(disappeared.name);
     expect(view.birth_date).toBe(disappeared.birth_date);
-    expect(view.disappearance_date).toBe(disappeared.disappearance_date);
-    expect(view.mobile_contact).toBe(disappeared.mobile_contact);
+    expect(view.date).toBe(disappeared.date);
+    expect(view.obs).toBe(disappeared.obs);
+    expect(view.status).toBe(disappeared.status);
     expect(view.createdAt).toBeTruthy();
     expect(view.updatedAt).toBeTruthy();
   });
