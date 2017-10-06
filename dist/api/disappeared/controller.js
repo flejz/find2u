@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.destroy = exports.update = exports.show = exports.index = exports.create = undefined;
+exports.get = exports.destroy = exports.update = exports.show = exports.index = exports.create = undefined;
 
 var _extends2 = require('babel-runtime/helpers/extends');
 
@@ -22,10 +22,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var create = exports.create = function create(_ref, res, next) {
   var user = _ref.user,
       body = _ref.bodymen.body;
-
-
-  console.log(body);
-
   return _2.Disappeared.create((0, _extends3.default)({}, body, { user: user })).then(function (disappeared) {
     return disappeared.view(true);
   }).then((0, _response.success)(res, 201)).catch(next);
@@ -67,5 +63,12 @@ var destroy = exports.destroy = function destroy(_ref5, res, next) {
   return _2.Disappeared.findById(params.id).then((0, _response.notFound)(res)).then((0, _response.authorOrAdmin)(res, user, 'user')).then(function (disappeared) {
     return disappeared ? disappeared.remove() : null;
   }).then((0, _response.success)(res, 204)).catch(next);
+};
+
+var get = exports.get = function get(req, res, next) {
+  return _2.Disappeared.findById(req.body.disappeared_id).then(function (disappeared) {
+    req.disappeared = disappeared;
+    next();
+  }).catch((0, _response.badRequest)(res));
 };
 //# sourceMappingURL=controller.js.map

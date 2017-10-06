@@ -18,6 +18,10 @@ var _disappeared = require('./disappeared');
 
 var _disappeared2 = _interopRequireDefault(_disappeared);
 
+var _characteristics = require('./characteristics');
+
+var _characteristics2 = _interopRequireDefault(_characteristics);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = new _express.Router();
@@ -38,6 +42,7 @@ var router = new _express.Router();
 router.use('/users', _user2.default);
 router.use('/auth', _auth2.default);
 router.use('/disappeareds', _disappeared2.default);
+router.use('/characteristics', _characteristics2.default);
 
 exports.default = router;
 //# sourceMappingURL=index.js.map

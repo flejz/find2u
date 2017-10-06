@@ -22,6 +22,13 @@ var notFound = exports.notFound = function notFound(res) {
   };
 };
 
+var badRequest = exports.badRequest = function badRequest(res) {
+  return function (msg) {
+    res.status(400).send(msg).end();
+    return null;
+  };
+};
+
 var authorOrAdmin = exports.authorOrAdmin = function authorOrAdmin(res, user, userField) {
   return function (entity) {
     if (entity) {
